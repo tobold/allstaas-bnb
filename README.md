@@ -15,11 +15,15 @@ so I can view available listings,
 I want to see the listings on the homepage
 
 As a user,
+so I can stay at a listing,
+I want to be able to create a booking request
+
+As a user,
 so I can use All Staas BnB,
 I would like to be able to create an account
 
 As a user,
-so I can use the website as me, 
+so I can use the website as me,
 I want to be able to log in to the All Staas BnB website
 
 As a user,
