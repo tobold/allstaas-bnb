@@ -23,7 +23,7 @@ describe('contact page', function() {
   describe('submits form', function() {
     it('should be successful', function() {
       this.browser.assert.success();
-      this.browser.assert.text('body', 'Hello World!');
+      this.browser.assert.text('body', 'Thank you!');
     });
   });
 });
