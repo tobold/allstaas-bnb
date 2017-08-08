@@ -1,20 +1,20 @@
 process.env.NODE_ENV = 'test';
-
+var app = require('../../app');
 var Browser = require('zombie');
-var server = require('../../server/server');
+var http = require('http');
 
-Browser.localhost('localhost', 6840);
-
-describe('User visits create listing page', function() {
-
-  var browser = new Browser();
-
-  before(function(done) {
-    browser.visit('/listings/new', done);
+describe('contact page', function() {
+  before(function() {
+    this.server = http.createServer(app).listen(3000);
+    this.browser = new Browser({ site: 'http://localhost:3000' });
   });
 
   before(function(done) {
-        browser
+    this.browser.visit('/', done);
+  });
+
+  before(function(done) {
+        this.browser
           .fill('name',    'tester')
           .fill('description', 'its a very nice space')
           .pressButton('Submit', done);
@@ -22,8 +22,8 @@ describe('User visits create listing page', function() {
 
   describe('submits form', function() {
     it('should be successful', function() {
-      browser.assert.success();
-      browser.assert.text('body', 'Hello World!');
+      this.browser.assert.success();
+      this.browser.assert.text('body', 'Hello World!');
     });
   });
 });
