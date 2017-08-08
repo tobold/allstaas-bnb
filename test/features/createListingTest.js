@@ -14,7 +14,7 @@ describe('contact page', function() {
   });
 
   before(function(done) {
-        browser
+        this.browser
           .fill('name',    'tester')
           .fill('description', 'its a very nice space')
           .pressButton('Submit', done);
