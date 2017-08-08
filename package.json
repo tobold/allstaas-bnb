@@ -1,0 +1,34 @@
+{
+  "name": "allstaas-bnb",
+  "version": "1.0.0",
+  "description": "Our Airbnb clone",
+  "main": "server.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tobold/allstaas-bnb.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tobold/allstaas-bnb/issues"
+  },
+  "homepage": "https://github.com/tobold/allstaas-bnb#readme",
+  "dependencies": {
+    "express": "^4.15.4",
+    "pg": "^7.1.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.4.2"
+  },
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "eslint": "^4.4.1",
+    "mocha": "^3.5.0",
+    "mocha-phantomjs": "^4.1.0",
+    "selenium-webdriver": "^3.5.0",
+    "sequelize-cli": "^2.8.0",
+    "zombie": "^5.0.7"
+  }
+}
