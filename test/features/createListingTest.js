@@ -1,23 +1,29 @@
 process.env.NODE_ENV = 'test';
-var app = require('../../server/server.js');
-console.log(app);
+
 var Browser = require('zombie');
-var assert = require('chai').assert;
-var http = require('http');
+var server = require('../../server/server');
 
-describe('create listings page', function() {
-  before(function() {
-    this.server = http.createServer(app);
-    this.browser = new Browser({ site: 'http://localhost:6840' });
-  });
+Browser.localhost('localhost', 6840);
+
+describe('User visits create listing page', function() {
+
+  var browser = new Browser();
+
   before(function(done) {
-    this.browser.visit('/listings/new', done);
+    browser.visit('/listings/new', done);
   });
 
-  it('should show an entry form', function() {
-    assert.isOk(this.browser.success);
-    assert.equal(this.browser.text('h1'), 'New Listing');
-    assert.equal(this.browser.text('form label'), 'NameDescriptionPriceAvailable fromAvailable until');
+  before(function(done) {
+        browser
+          .fill('name',    'tester')
+          .fill('description', 'its a very nice space')
+          .pressButton('Submit', done);
+      });
+
+  describe('submits form', function() {
+    it('should be successful', function() {
+      browser.assert.success();
+      browser.assert.text('body', 'Hello World!');
+    });
   });
-  it('')
 });
