@@ -17,8 +17,6 @@ router.get('/new', function(req, res, next) {
 });
 
 router.post('/', function(req, res) {
-  console.log(req.body.name);
-  console.log(req.body.description);
   models.Listing.create({ name: req.body.name, description: req.body.description }).then(function() {
     res.redirect('/listings');
   });
