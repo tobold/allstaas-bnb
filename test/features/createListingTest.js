@@ -2,6 +2,9 @@ process.env.NODE_ENV = 'test';
 var app = require('../../app');
 var Browser = require('zombie');
 var http = require('http');
+var chai = require('chai');
+var assert = chai.assert;
+var expect = chai.expect;
 
 describe('contact page', function() {
   before(function() {
@@ -10,20 +13,21 @@ describe('contact page', function() {
   });
 
   before(function(done) {
-    this.browser.visit('/', done);
+    this.browser.visit('/listings/new', done);
   });
 
   before(function(done) {
         this.browser
           .fill('name',    'tester')
-          .fill('description', 'its a very nice space')
+          .fill('description', 'it is a very nice space')
           .pressButton('Submit', done);
       });
 
   describe('submits form', function() {
     it('should be successful', function() {
       this.browser.assert.success();
-      this.browser.assert.text('body', 'Hello World!');
+      expect(this.browser.text('body')).to.include('tester')
+      expect(this.browser.text('body')).to.include('it is a very nice space')
     });
   });
 });
