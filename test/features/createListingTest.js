@@ -6,7 +6,7 @@ var chai = require('chai');
 var assert = chai.assert;
 var expect = chai.expect;
 
-describe('contact page', function() {
+describe('listings page', function() {
   before(function() {
     this.server = http.createServer(app).listen(3000);
     this.browser = new Browser({ site: 'http://localhost:3000' });
@@ -29,5 +29,9 @@ describe('contact page', function() {
       expect(this.browser.text('body')).to.include('tester')
       expect(this.browser.text('body')).to.include('it is a very nice space')
     });
+  });
+
+  after(function() {
+    this.server.close();
   });
 });
