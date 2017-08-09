@@ -6,6 +6,8 @@
   </head>
   <body>
     <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <a href="/listings/new" class="button">create new listing</a>
     <% listings.forEach(function(item, index) { %>
       <p><%= item.name %></p>
       <p><%= item.description %></p>
