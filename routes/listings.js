@@ -25,6 +25,15 @@ router.get('/:id', function(req, res) {
   });
 });
 
+router.get('/:id/booking', function(req, res) {
+  models.Listing.findById(req.params.id).then(function(listing) {
+    res.render('bookings-new', {
+      title: "New Booking",
+      listing: listing
+    });
+  });
+});
+
 router.post('/', function(req, res) {
   models.Listing.create({ name: req.body.name, description: req.body.description }).then(function() {
     res.redirect('/listings');

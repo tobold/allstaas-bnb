@@ -33,6 +33,10 @@ describe('booking page', function() {
   });
 
   before(function(done) {
+    this.browser.clickLink('tester', done);
+  });
+
+  before(function(done) {
     this.browser.clickLink('Book', done);
   });
 
