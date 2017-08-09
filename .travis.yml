@@ -4,3 +4,10 @@ node_js:
 
 notifications:
   email: false
+
+services:
+  - postgresql
+
+before_script:
+  - createdb allstaas-test
+  - sequelize db:migrate --env test
