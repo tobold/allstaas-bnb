@@ -5,8 +5,17 @@ var http = require('http');
 var chai = require('chai');
 var assert = chai.assert;
 var expect = chai.expect;
+var models = require('../../server/models')
 
 describe('booking page', function() {
+
+  beforeEach(function (done) {
+        models.Booking.sync({force: true})
+            .then(function () {
+                done();
+            });
+    });
+
   before(function() {
     this.server = http.createServer(app).listen(3000);
     this.browser = new Browser({ site: 'http://localhost:3000' });
@@ -43,6 +52,4 @@ describe('booking page', function() {
   after(function() {
     this.server.close();
   });
-
-
 });
