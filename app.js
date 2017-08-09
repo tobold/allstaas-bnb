@@ -21,7 +21,7 @@ app.set('view engine', 'ejs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 if (process.env.NODE_ENV !== 'test') {
-  app.useapp.use(logger('dev'));
+  app.use(logger('dev'));
 }
 
 app.use(bodyParser.json());
