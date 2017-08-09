@@ -9,5 +9,7 @@
     <p>Welcome to <%= title %></p>
       <p><%= listing.name %></p>
       <p><%= listing.description %></p>
+      <% var url = "/listings/" + listing.id + "/booking"%>
+      <a href=<%= url %> class="button">Book</a>
   </body>
 </html>

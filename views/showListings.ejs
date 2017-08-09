@@ -9,9 +9,9 @@
     <p>Welcome to <%= title %></p>
     <a href="/listings/new" class="button">create new listing</a>
     <% listings.forEach(function(item, index) { %>
-      <p><%= item.name %></p>
+      <% var url = "/listings/" + item.id %>
+      <a href=<%= url %>><%= item.name %></a>
       <p><%= item.description %></p>
-      <a href="/bookings/new" class="button">Book</a>
     <%    }); %>
   </body>
 </html>
