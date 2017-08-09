@@ -6,6 +6,14 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <p>Welcome to Allstaas-bnb<%= title %></p>
+    <form action="/confirmation" method="post">
+      Name: <input type="text" name="name">
+      Description: <input type="text" name="description">
+      Price: <input type="text" name="price">
+      Available from: <input type="text" name="availableFrom">
+      Available till: <input type="text" name="availableTill">
+      <input type="submit" value="Submit">
+    </form>
   </body>
 </html>
