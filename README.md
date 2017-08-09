@@ -1,3 +1,15 @@
+INSTRUCTIONS FOR LOCAL SETUP
+----------------------------
+```
+$ npm install
+$ npm install sequelize-cli -g
+$ createdb allstaas-test
+$ createdb allstaas-dev
+$ sequelize db:migrate
+$ sequelize db:migrate --env test
+$ mocha
+```
+
 Description
 ----------
 
