@@ -1,22 +1,29 @@
-<p>Welcome to Allstaas Bnb</p>
-<a href="/listings/new" class="button">create new listing</a>
-<br>
-<br>
+<div class="container">
+  <span class="row">
+    <div class="col-md-12 text-center">
+      <p>Welcome to Allstaas Bnb</p>
+      <a href="/listings/new" class="btn-primary btn-lg">create new listing</a>
+      <br>
+      <br>
+    </div>
+  </span>
 
-<div class="row">
-<% listings.forEach(function(item, index) { %>
-  <% var url = "/listings/" + item.id %>
+  <div class="row">
+    <% listings.forEach(function(item, index) { %>
+      <% var url = "/listings/" + item.id %>
       <div class="col-md-4 portfolio-item">
-          <a href=<%= url %>>
-              <img class="img-responsive" src="/images/listingplaceholder.jpg" alt="">
-          </a>
-          <h3>
-              <a href=<%= url %>><%= item.name %></a>
-          </h3>
-          <p>
-            £<%= item.price %> per night
-          </p>
-          <p class="limiteddescription"><%= item.description %></p>
+        <a href=<%= url %>>
+            <img class="img-responsive" src="/images/listingplaceholder.jpg" alt="">
+        </a>
+        <h3>
+            <a href=<%= url %>><%= item.name %></a>
+        </h3>
+        <p>
+          £<%= item.price %> per night
+        </p>
+        <p class="limiteddescription"><%= item.description %></p>
+        <br>
       </div>
-<%    }); %>
+    <%    }); %>
+  </div>
 </div>
