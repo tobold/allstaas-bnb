@@ -34,7 +34,7 @@ app.use(expressLayouts);
 app.use('/', index);
 app.use('/users', users);
 app.use('/listings', listings);
-app.use('/bookings', bookings)
+app.use('/bookings', bookings);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
