@@ -1,6 +1,29 @@
-<form action="/bookings" method="post">
-  <input type="hidden" value="<%= listing.id %>" name="listingId" />
-  Date from: <input type="date" name="bookFrom">
-  Date to: <input type="date" name="bookTill">
-  <input type="submit" value="Submit">
-</form>
+<div class="container">
+
+  <form action="/bookings" method="post" role="form" class="form-horizontal">
+
+    <input type="hidden" value="<%= listing.id %>" name="listingId" />
+
+    <div class="form-group">
+      <label for="bookFrom" class="col-sm-2 control-label">Book from:</label>
+      <div class="col-sm-10">
+        <input type="date" id="bookFrom" name="bookFrom" class="form-control" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="bookTill" class="col-sm-2 control-label">Book until:</label>
+      <div class="col-sm-10">
+        <input type="date" id="bookTill" name="bookTill" class="form-control" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <input type="submit" value="Submit">
+      </div>
+    </div>
+
+  </form>
+
+</div>
