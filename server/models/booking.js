@@ -1,14 +1,14 @@
+var models = require('../../server/models')
+
 'use strict';
+
 module.exports = function(sequelize, DataTypes) {
-  var Booking = sequelize.define('Booking', {
+  const Booking = sequelize.define('Booking', {
     bookFrom: DataTypes.STRING,
     bookTill: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   });
-  return Booking;
+  Booking.associate = function (models) {  
+    Booking.belongsTo(models.Listing);
+  };
+    return Booking;
 };
