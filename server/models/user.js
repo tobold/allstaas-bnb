@@ -1,28 +1,22 @@
 'use strict';
-var bcrypt = require("bcrypt-nodejs");
+var bcrypt = require('bcrypt');
 
 module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define('user', {
-    Firstname: DataTypes.STRING,
-    Lastname: DataTypes.STRING,
-    Email: DataTypes.STRING,
-    Password: DataTypes.STRING
+  var User = sequelize.define('User', {
+    first_name: DataTypes.STRING,
+    last_name: DataTypes.STRING,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING,
   }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
+    hooks: {
+      beforeCreate: (user) => {
+        const salt = bcrypt.genSaltSync();
+        user.password = bcrypt.hashSync(user.password, salt);
       }
     }
-  }, {
-    instanceMethods: {
-      generateHash: function (password) {
-        return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-      },
-      validPassword: function(password) {
-        return bcrypt.compareSync(password, this.password);
-      },
-    }
   });
-   User.sync()
-   return User;
+  User.prototype.validPassword = function(password) {
+      return bcrypt.compareSync(password, this.password);
+  }
+  return User;
 };

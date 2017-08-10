@@ -7,6 +7,8 @@ var assert = chai.assert;
 var expect = chai.expect;
 var models = require('../../server/models')
 
+console.log(models);
+
 describe('user sign up page', function() {
 
   beforeEach(function (done) {
@@ -27,16 +29,19 @@ describe('user sign up page', function() {
 
   before(function(done) {
     this.browser
-      .fill('first-name',    'Dave')
-      .fill('last-name', 'Davis')
+      .fill('first_name',    'Dave')
+      .fill('last_name', 'Davis')
       .fill('email', 'dave@dave.org')
       .fill('password', 'goodpassword')
+      .fill('password_confirmation', 'goodpassword')
       .pressButton('Sign up', done);
   });
 
   it('creates a new user', function() {
     this.browser.assert.success();
-    expect(models.User.findAll().count).to.equal(1)
+    models.User.findAll().then(function(users) {
+      expect(users.count()).to.equal(1)
+    });
   });
 
   after(function() {
