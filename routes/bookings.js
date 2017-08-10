@@ -7,7 +7,8 @@ router.get('/new', function(req, res) {
 });
 
 router.post('/', function(req,res) {
-  models.Booking.create({bookFrom: req.body.bookFrom, bookTill: req.body.bookTill}).then(function() {
+  console.log(req.body.listingId)
+  models.Booking.create({bookFrom: req.body.bookFrom, bookTill: req.body.bookTill, ListingId: req.body.listingId}).then(function() {
     res.redirect('/bookings')
   });
 });
