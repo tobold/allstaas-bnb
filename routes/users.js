@@ -4,7 +4,6 @@ var models = require('../server/models');
 
 /* GET users listing. */
 router.post('/', function(req, res, next) {
-  console.log(req.body);
   models.User.create({
     first_name: req.body.first_name,
     last_name: req.body.last_name,
