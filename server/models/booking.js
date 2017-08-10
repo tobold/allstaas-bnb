@@ -5,9 +5,10 @@ var models = require('../../server/models')
 module.exports = function(sequelize, DataTypes) {
   const Booking = sequelize.define('Booking', {
     bookFrom: DataTypes.STRING,
-    bookTill: DataTypes.STRING
+    bookTill: DataTypes.STRING,
+    status: DataTypes.STRING
   });
-  Booking.associate = function (models) {  
+  Booking.associate = function (models) {
     Booking.belongsTo(models.Listing);
   };
     return Booking;
