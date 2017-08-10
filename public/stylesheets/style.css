@@ -1,8 +1,20 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.navbar-inverse {
+  background-image: url("/images/space-2.png");
+  border-color: #080808;
 }
 
-a {
-  color: #00B7FF;
+.navbar-brand {
+    float: left;
+    height: 90px;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+#navbarHeaders {
+  font-size: 20px
+}
+
+.nav navbar-nav {
+    vertical-align: middle;
 }
