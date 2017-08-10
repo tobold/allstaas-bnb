@@ -12,8 +12,26 @@ router.get('/', function(req, res) {
   });
 });
 
-router.get('/new', function(req, res, next) {
+router.get('/new', function(req, res) {
   res.render('listings-new', { title: "New Listing"});
+});
+
+router.get('/:id', function(req, res) {
+  models.Listing.findById(req.params.id).then(function(listing) {
+    res.render('showListing', {
+      title: ("Listing number: " + req.params.id),
+      listing: listing
+    });
+  });
+});
+
+router.get('/:id/booking', function(req, res) {
+  models.Listing.findById(req.params.id).then(function(listing) {
+    res.render('bookings-new', {
+      title: "New Booking",
+      listing: listing
+    });
+  });
 });
 
 router.post('/', function(req, res) {
