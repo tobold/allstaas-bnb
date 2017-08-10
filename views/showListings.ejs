@@ -1,5 +1,7 @@
-<p>Welcome to <%= title %></p>
+<p>Welcome to Allstaas Bnb</p>
 <a href="/listings/new" class="button">create new listing</a>
+<br>
+<br>
 <% listings.forEach(function(item, index) { %>
   <% var url = "/listings/" + item.id %>
   <a href=<%= url %>><%= item.name %></a>

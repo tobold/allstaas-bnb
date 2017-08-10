@@ -32,7 +32,6 @@ describe('user sign up page', function() {
       .fill('last_name', 'Davis')
       .fill('email', 'dave@dave.org')
       .fill('password', 'goodpassword')
-      .fill('password_confirmation', 'goodpassword')
       .pressButton('Sign up', done);
   });
 

@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/new', function(req, res) {
-  res.render('listings-new', { title: "New Listing"});
+  res.render('listings-new');
 });
 
 router.get('/:id', function(req, res) {

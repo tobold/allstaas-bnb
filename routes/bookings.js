@@ -14,10 +14,7 @@ router.post('/', function(req,res) {
 
 router.get('/', function(req, res) {
   models.Booking.findAll().then(function(bookings) {
-    res.render('bookings', {
-      title: "Bookings",
-      bookings: bookings
-      });
+    res.render('bookings', { bookings: bookings });
     });
 });
 
