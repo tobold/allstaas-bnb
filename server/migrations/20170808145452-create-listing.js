@@ -10,11 +10,23 @@ module.exports = {
       },
       name: {
         allowNull: false,
-        type: Sequelize.STRING        
+        type: Sequelize.STRING
       },
       description: {
         allowNull: false,
         type: Sequelize.TEXT
+      },
+      price: {
+        allowNull: false,
+        type: Sequelize.FLOAT
+      },
+      listFrom: {
+        allowNull: false,
+        type: Sequelize.DATEONLY
+      },
+      listTill: {
+        allowNull: false,
+        type: Sequelize.DATEONLY
       },
       createdAt: {
         allowNull: false,

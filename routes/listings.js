@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/new', function(req, res) {
-  res.render('listings-new', { title: "New Listing"});
+  res.render('listings-new');
 });
 
 router.get('/:id', function(req, res) {
@@ -35,7 +35,7 @@ router.get('/:id/booking', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-  models.Listing.create({ name: req.body.name, description: req.body.description }).then(function() {
+  models.Listing.create({ name: req.body.name, description: req.body.description, price: req.body.price, listFrom: req.body.listFrom, listTill: req.body.listTill }).then(function() {
     res.redirect('/listings');
   });
 });

@@ -29,6 +29,9 @@ describe('listings page', function() {
         this.browser
           .fill('name',    'tester')
           .fill('description', 'it is a very nice space')
+          .fill('price', 20)
+          .fill('listFrom', '2017-10-01')
+          .fill('listTill', '2017-10-02')
           .pressButton('Submit', done);
       });
 

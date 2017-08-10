@@ -7,18 +7,14 @@ router.get('/new', function(req, res) {
 });
 
 router.post('/', function(req,res) {
-  console.log(req.body.listingId)
-  models.Booking.create({bookFrom: req.body.bookFrom, bookTill: req.body.bookTill, ListingId: req.body.listingId}).then(function() {
+  models.Booking.create({bookFrom: req.body.bookFrom, bookTill: req.body.bookTill, status: "pending", ListingId: req.body.listingId}).then(function() {
     res.redirect('/bookings')
   });
 });
 
 router.get('/', function(req, res) {
   models.Booking.findAll().then(function(bookings) {
-    res.render('bookings', {
-      title: "Bookings",
-      bookings: bookings
-      });
+    res.render('bookings', { bookings: bookings });
     });
 });
 

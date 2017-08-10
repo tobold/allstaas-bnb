@@ -20,7 +20,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.get('/new', function(req, res, next) {
-  res.render('users-new', { title: "Hello" });
+  res.render('users-new');
 });
 
 module.exports = router;
