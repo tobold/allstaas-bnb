@@ -28,6 +28,7 @@ module.exports = {
     });
   },
   down: function(queryInterface, Sequelize) {
+    console.log('FAILED');
     return queryInterface.dropTable('Bookings');
   }
 };
