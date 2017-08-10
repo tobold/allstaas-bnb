@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <a href="/listings/new" class="button">create new listing</a>
-    <% listings.forEach(function(item, index) { %>
-      <% var url = "/listings/" + item.id %>
-      <a href=<%= url %>><%= item.name %></a>
-      <p><%= item.description %></p>
-    <%    }); %>
-  </body>
-</html>
+<p>Welcome to <%= title %></p>
+<a href="/listings/new" class="button">create new listing</a>
+<% listings.forEach(function(item, index) { %>
+  <% var url = "/listings/" + item.id %>
+  <a href=<%= url %>><%= item.name %></a>
+  <p><%= item.description %></p>
+<%    }); %>
