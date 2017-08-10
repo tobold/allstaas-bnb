@@ -7,7 +7,6 @@ var assert = chai.assert;
 var expect = chai.expect;
 var models = require('../../server/models')
 
-console.log(models);
 
 describe('user sign up page', function() {
 

@@ -9,11 +9,16 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       bookFrom: {
-        type: Sequelize.STRING
+        type: Sequelize.DATEONLY
       },
       bookTill: {
+        type: Sequelize.DATEONLY
+      },
+
+      status: {
         type: Sequelize.STRING
       },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
