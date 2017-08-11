@@ -11,7 +11,7 @@ var sessionChecker = (req, res, next) => {
 };
 
 router.post('/', function(req,res) {
-  models.Booking.create({bookFrom: req.body.bookFrom, bookTill: req.body.bookTill, status: "pending", ListingId: req.body.listingId}).then(function() {
+  models.Booking.create({bookFrom: req.body.bookFrom, bookTill: req.body.bookTill, status: "pending", listingId: req.body.listingId}).then(function() {
     res.redirect('/bookings')
   });
 });
