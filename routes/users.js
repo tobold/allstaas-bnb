@@ -10,8 +10,9 @@ router.post('/', function(req, res, next) {
     email: req.body.email,
     password: req.body.password,
   })
-    .then(function() {
-          res.redirect('/listings');
+    .then(function(user) {
+      req.session.user = user.dataValues;
+      res.redirect('/listings');
     })
     .catch(function(error) {
       res.redirect('/users/new');

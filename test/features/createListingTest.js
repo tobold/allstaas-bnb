@@ -16,6 +16,13 @@ describe('listings page', function() {
             });
     });
 
+  beforeEach(function (done) {
+        models.User.sync({force: true})
+            .then(function () {
+                done();
+            });
+    });
+
   before(function() {
     this.server = http.createServer(app).listen(3000);
     this.browser = new Browser({ site: 'http://localhost:3000' });

@@ -2,9 +2,13 @@ var express = require('express');
 var router = express.Router();
 var models = require('../server/models');
 
-router.get('/new', function(req, res) {
-  res.render('bookings-new', { title: "New Booking"});
-});
+var sessionChecker = (req, res, next) => {
+    if (!req.session.user) {
+        res.redirect('/sessions/new');
+    } else {
+        next();
+    }
+};
 
 router.post('/', function(req,res) {
   models.Booking.create({bookFrom: req.body.bookFrom, bookTill: req.body.bookTill, status: "pending", ListingId: req.body.listingId}).then(function() {
