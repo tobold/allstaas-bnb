@@ -21,10 +21,14 @@ router.get('/', function(req, res) {
   });
 });
 
-router.route('/new')
-  .get(sessionChecker, (req, res) => {
-    res.render('listings-new');
-});
+// router.route('/new')
+//   .get(sessionChecker, (req, res) => {
+//     res.render('listings-new');
+// });
+
+router.get('/new', function(req, res) {
+  res.render('listings-new');
+})
 
 router.get('/:id', function(req, res) {
   models.Listing.findById(req.params.id).then(function(listing) {
@@ -35,8 +39,17 @@ router.get('/:id', function(req, res) {
   });
 });
 
-router.route('/:id/booking')
-  .get(sessionChecker, (req, res) => {
+// router.route('/:id/booking')
+//   .get(sessionChecker, (req, res) => {
+//     models.Listing.findById(req.params.id).then(function(listing) {
+//       res.render('bookings-new', {
+//         title: "New Booking",
+//         listing: listing
+//       });
+//     });
+//   });
+
+router.get('/:id/booking', function(req, res) {
     models.Listing.findById(req.params.id).then(function(listing) {
       res.render('bookings-new', {
         title: "New Booking",

@@ -14,6 +14,9 @@ describe('listings page', function() {
             .then(function () {
                 done();
             });
+    });
+
+  beforeEach(function (done) {
         models.User.sync({force: true})
             .then(function () {
                 done();
@@ -26,17 +29,7 @@ describe('listings page', function() {
   });
 
   before(function(done) {
-    this.browser.visit('/users/new', done)
-
-
-    this.browser
-      .fill('first_name',    'Dave')
-      .fill('last_name', 'Davis')
-      .fill('email', 'notanemail')
-      .fill('password', 'goodpassword')
-      .pressButton('Sign up').then(function() {
-        this.browser.visit('/listings/new', done);
-      });
+    this.browser.visit('/listings/new', done);
   });
 
   before(function(done) {
