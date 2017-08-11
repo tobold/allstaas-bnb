@@ -27,6 +27,9 @@ module.exports = {
       },
       ListingId: {
         type: Sequelize.INTEGER
+      },
+      UserId: {
+        type: Sequelize.INTEGER
       }
     });
   },

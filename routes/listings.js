@@ -15,6 +15,7 @@ router.get('/', function(req, res) {
     res.render('showListings', {
       title: "Allstaas Bnb",
       listings: listings
+
     });
   });
 });

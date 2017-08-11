@@ -40,6 +40,7 @@ module.exports = function(sequelize, DataTypes) {
 
   User.associate = function (models) {
     User.hasMany(models.Listing);
+    User.hasMany(models.Booking);
   };
 
   User.prototype.validPassword = function(password) {
