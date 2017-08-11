@@ -9,8 +9,20 @@ var models = require('../../server/models')
 
 describe('booking page', function() {
 
-  beforeEach(function (done) {
+  before(function (done) {
         models.Booking.sync({force: true})
+            .then(function () {
+                done();
+            });
+    });
+  before(function (done) {
+        models.Listing.sync({force: true})
+            .then(function () {
+                done();
+            });
+    });
+  before(function (done) {
+        models.User.sync({force: true})
             .then(function () {
                 done();
             });
@@ -19,6 +31,18 @@ describe('booking page', function() {
   before(function() {
     this.server = http.createServer(app).listen(3000);
     this.browser = new Browser({ site: 'http://localhost:3000' });
+  });
+
+  before(function(done) {
+    this.browser.visit('/users/new', done);
+  });
+  before(function(done) {
+    this.browser
+    .fill('first_name',    'Dave')
+    .fill('last_name', 'Davis')
+    .fill('email', 'dave@dave.org')
+    .fill('password', 'goodpassword')
+    .pressButton('Sign up').then(done)
   });
 
   before(function(done) {
@@ -41,8 +65,8 @@ describe('booking page', function() {
 
   it('shows a listing page', function() {
     this.browser.assert.success();
-    expect(this.browser.text('body')).to.include('tester')
-    expect(this.browser.text('body')).to.include('it is a very nice space')
+    expect(this.browser.text('body')).to.include('tester');
+    expect(this.browser.text('body')).to.include('it is a very nice space');
   });
 
   after(function() {
