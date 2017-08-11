@@ -10,12 +10,12 @@ var sessionChecker = (req, res, next) => {
     }
 };
 
-/* GET users listing. */
 router.get('/', function(req, res) {
   models.Listing.findAll().then(function(listings) {
     res.render('showListings', {
       title: "Allstaas Bnb",
       listings: listings
+
     });
   });
 });
@@ -24,10 +24,6 @@ router.route('/new')
   .get(sessionChecker, (req, res) => {
     res.render('listings-new');
 });
-
-// router.get('/new', function(req, res) {
-//   res.render('listings-new');
-// })
 
 router.get('/:id', function(req, res) {
   models.Listing.findById(req.params.id).then(function(listing) {
@@ -38,17 +34,8 @@ router.get('/:id', function(req, res) {
   });
 });
 
-// router.route('/:id/booking')
-//   .get(sessionChecker, (req, res) => {
-//     models.Listing.findById(req.params.id).then(function(listing) {
-//       res.render('bookings-new', {
-//         title: "New Booking",
-//         listing: listing
-//       });
-//     });
-//   });
-
-router.get('/:id/booking', function(req, res) {
+router.route('/:id/booking')
+  .get(sessionChecker, (req, res) => {
     models.Listing.findById(req.params.id).then(function(listing) {
       res.render('bookings-new', {
         title: "New Booking",
@@ -58,7 +45,14 @@ router.get('/:id/booking', function(req, res) {
   });
 
 router.post('/', function(req, res) {
-  models.Listing.create({ name: req.body.name, description: req.body.description, price: req.body.price, listFrom: req.body.listFrom, listTill: req.body.listTill }).then(function() {
+  var listing = models.Listing.create({
+    name: req.body.name,
+    description: req.body.description,
+    price: req.body.price,
+    listFrom: req.body.listFrom,
+    listTill: req.body.listTill,
+    UserId: req.session.user.id
+  }).then(function() {
     res.redirect('/listings');
   });
 });
