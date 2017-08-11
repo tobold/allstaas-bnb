@@ -6,11 +6,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var formidable = require('express-formidable');
 var expressLayouts = require('express-ejs-layouts');
+var session = require('express-session');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 var listings = require('./routes/listings');
-var bookings = require('./routes/bookings')
+var bookings = require('./routes/bookings');
+var sessions = require('./routes/sessions');
 
 var app = express();
 
@@ -31,10 +33,29 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressLayouts);
 
+// initialize express-session for tracking user sessions
+app.use(session({
+  key: 'user_sid',
+  secret: 'somerandomstuff',
+  resave: false,
+  cookie: {
+    expires: 600000
+  }
+}));
+
 app.use('/', index);
 app.use('/users', users);
 app.use('/listings', listings);
 app.use('/bookings', bookings);
+app.use('/sessions', sessions);
+
+//checks if cookie is saved in the browser when no user is set
+app.use(function(req, res, next){
+  if (req.cookies.user_sid && !req.session.user) {
+    res.clearCookie('user_sid');
+  }
+  next();
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
