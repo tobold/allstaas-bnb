@@ -3,7 +3,6 @@ var router = express.Router();
 var models = require('../server/models');
 
 var sessionChecker = (req, res, next) => {
-  console.log(req.session )
     if (!req.session.user || !req.cookies.user_sid ) {
         res.redirect('/sessions/new');
     } else {
@@ -21,14 +20,14 @@ router.get('/', function(req, res) {
   });
 });
 
-// router.route('/new')
-//   .get(sessionChecker, (req, res) => {
-//     res.render('listings-new');
-// });
+router.route('/new')
+  .get(sessionChecker, (req, res) => {
+    res.render('listings-new');
+});
 
-router.get('/new', function(req, res) {
-  res.render('listings-new');
-})
+// router.get('/new', function(req, res) {
+//   res.render('listings-new');
+// })
 
 router.get('/:id', function(req, res) {
   models.Listing.findById(req.params.id).then(function(listing) {

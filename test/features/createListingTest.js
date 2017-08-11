@@ -9,14 +9,14 @@ var models = require('../../server/models')
 
 describe('listings page', function() {
 
-  beforeEach(function (done) {
+  before(function (done) {
         models.Listing.sync({force: true})
             .then(function () {
                 done();
             });
     });
 
-  beforeEach(function (done) {
+  before(function (done) {
         models.User.sync({force: true})
             .then(function () {
                 done();
@@ -32,21 +32,39 @@ describe('listings page', function() {
     this.browser.visit('/listings/new', done);
   });
 
-  before(function(done) {
-        this.browser
-          .fill('name',    'tester')
-          .fill('description', 'it is a very nice space')
-          .fill('price', 20)
-          .fill('listFrom', '2017-10-01')
-          .fill('listTill', '2017-10-02')
-          .pressButton('Submit', done);
-      });
+  describe('not logged in', function() {
+    it('should redirect to login', function() {
+      this.browser.assert.url({pathname: '/sessions/new'})
+    });
+  });
 
-  describe('submits form', function() {
-    it('should be successful', function() {
-      this.browser.assert.success();
-      expect(this.browser.text('body')).to.include('tester')
-      expect(this.browser.text('body')).to.include('it is a very nice space')
+  describe('logged in', function() {
+    before(function(done) {
+      this.browser.visit('/users/new', done);
+    });
+    before(function(done) {
+      this.browser
+      .fill('first_name',    'Dave')
+      .fill('last_name', 'Davis')
+      .fill('email', 'dave@dave.org')
+      .fill('password', 'goodpassword')
+      .pressButton('Sign up').then(done)
+    });
+
+    before(function(done) {
+      this.browser.visit('/listings/new', done);
+    });
+    it('test test', function() {
+      this.browser
+        .fill('name',    'tester')
+        .fill('description', 'it is a very nice space')
+        .fill('price', 20)
+        .fill('listFrom', '2017-10-01')
+        .fill('listTill', '2017-10-02')
+        .pressButton('Submit').then(function() {
+          expect(this.browser.text('body')).to.include('tester')
+          expect(this.browser.text('body')).to.include('it is a very nice space')
+        });
     });
   });
 
