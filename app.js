@@ -13,6 +13,7 @@ var users = require('./routes/users');
 var listings = require('./routes/listings');
 var bookings = require('./routes/bookings');
 var sessions = require('./routes/sessions');
+var methodOverride = require('method-override');
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressLayouts);
+app.use(methodOverride('_method'));
 
 // initialize express-session for tracking user sessions
 app.use(session({

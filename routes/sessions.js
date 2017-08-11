@@ -37,24 +37,18 @@ router.route('/')
           });
       })
 
-  .delete((req, res) => {
-    if (req.session.user && req.cookies.user_sid) {
-      console.log(req.session.user)
-      console.log("I got here")
-      res.clearCookie('user_sid');
-    }
-    res.redirect('/')
-  });
-
 router.get('/new', function(req, res, next) {
   res.render('sessions-new', { title: "Hello" });
 });
 
-// router.get('/logout', function(req, res) {
-//   req.session.reset;
-//   console.log(req.session.user)
-//   res.redirect('/');
-// });
+router.get('/end', function(req, res) {
+  if (req.session.user && req.cookies.user_sid) {
+    console.log(req.session.user)
+    console.log("I got here")
+    res.clearCookie('user_sid');
+  }
+  res.redirect('/')
+});
 
 
 module.exports = router;
