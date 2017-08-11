@@ -10,6 +10,7 @@ module.exports = function(sequelize, DataTypes) {
   });
   Booking.associate = function (models) {
     Booking.belongsTo(models.Listing);
+    Booking.belongsTo(models.User);
   };
     return Booking;
 };

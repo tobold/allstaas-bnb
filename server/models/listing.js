@@ -11,7 +11,8 @@ module.exports = function(sequelize, DataTypes) {
     listTill: DataTypes.DATEONLY
   });
   Listing.associate = function (models) {
-  Listing.hasMany(models.Booking)
+  Listing.hasMany(models.Booking);
+  Listing.belongsTo(models.User);
   };
     return Listing;
 };
