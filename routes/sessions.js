@@ -32,17 +32,27 @@ router.route('/')
           });
       })
 
-    .delete((req, res) => {
-      if (req.session.user && req.cookies.user_sid) {
-        res.clearCookie('user_sid');
-      }
-      res.redirect('/')
-    });
+  // .get('/logout', function(req, res) {
+  //   req.session.reset();
+  //   res.redirect('/');
+  // });
 
-  router.get('/new', function(req, res, next) {
-    res.render('sessions-new', { title: "Hello" });
+  .delete((req, res) => {
+    if (req.session.user && req.cookies.user_sid) {
+      res.clearCookie('user_sid');
+    }
+    res.redirect('/')
   });
 
+router.get('/new', function(req, res, next) {
+  res.render('sessions-new', { title: "Hello" });
+});
+
+router.get('/logout', function(req, res) {
+  req.session.reset;
+  console.log(req.session.user)
+  res.redirect('/');
+});
 
 
 module.exports = router;
