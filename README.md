@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/tobold/allstaas-bnb.svg?branch=master)](https://travis-ci.org/tobold/allstaas-bnb)
 
-INSTRUCTIONS FOR LOCAL SETUP
+Instructions for local setup
 ----------------------------
 ```
 $ npm install
@@ -8,9 +8,20 @@ $ npm install sequelize-cli -g
 $ createdb allstaas-test
 $ createdb allstaas-dev
 $ sequelize db:migrate
-$ sequelize db:migrate --env test
-$ mocha
+$ sequelize db:migrate --env test```
+To run tests:
 ```
+$ mocha```
+
+To open project:
+```
+$ node server/server.js
+navigate to http://localhost:6840/ in browser```
+
+Screenshot
+----------
+
+![Alt text](/public/images/Allstaas-bnb-listings.png?raw=true "Optional Title")
 
 Description
 ----------
