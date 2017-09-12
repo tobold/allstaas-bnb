@@ -21,7 +21,7 @@ navigate to http://localhost:6840/ in browser```
 Screenshot
 ----------
 
-![Alt text](/public/images/Allstaas-bnb-listings.png?raw=true "Optional Title")
+![Alt text](/public/images/Allstaas-bnb-listings.png?raw=true)
 
 Description
 ----------
@@ -92,3 +92,7 @@ As a host,
 so that I do not receive multiple requests for the same dates,
 I want the space to be made unavailable when a request is made
 ```
+
+Contributors
+----------
+[Alex](https://github.com/Alexander-Blair) | [Alison](https://github.com/AlisonWoodman) | [Sapphire](https://github.com/SaphMB) | [Toby](https://github.com/tobold)
