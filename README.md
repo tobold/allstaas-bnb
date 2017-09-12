@@ -8,15 +8,17 @@ $ npm install sequelize-cli -g
 $ createdb allstaas-test
 $ createdb allstaas-dev
 $ sequelize db:migrate
-$ sequelize db:migrate --env test```
+$ sequelize db:migrate --env test
+```
 To run tests:
 ```
-$ mocha```
-
+$ mocha
+```
 To open project:
 ```
 $ node server/server.js
-navigate to http://localhost:6840/ in browser```
+navigate to http://localhost:6840/ in browser
+```
 
 Screenshot
 ----------
